@@ -1,6 +1,6 @@
+from random import randint
 crds = []
 
-import os
 def fill(q,x):
     i=1
     while i<=q:
@@ -15,5 +15,7 @@ while i<=9:
     fill(4,c)
     c+=1
     i+=1
+i = randint(0,35)
 
+#print(i)
 #print(crds)
