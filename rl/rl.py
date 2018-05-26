@@ -1,3 +1,9 @@
 from random import randint
-ma = []
+ma=[]
+i=0
+while i < 36:
+ i+=1
+ ma.append(i)
+print(ma)
+
 
