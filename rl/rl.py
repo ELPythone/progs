@@ -20,30 +20,40 @@ while i<=36:
 
 #---------------------------------
 #gameplay
-c = True
-#def check():
 
-
+"""
 def bet():
- lol=randint(0,36)
- q = input('how much will you bet?\n')
- ch= input('Type: \n1.To bet on color \n2. To bet on value\n')
- if ch =='1':
-  clr = input('What color?(red,black)\n')
-  return clr
- elif ch =='2':
-  n = input('type value(1-36)\n')
-  return n
- return q
+    #lol=randint(0,36)
+    q = input('how much will you bet?\n')
+    ch= input('To bet on [c]olor \nTo bet on [v]alue\n')
+    if ch =='c':
+        clr = input('What color?(red,black)\n')
+        return clr
+    elif ch =='c':
+        n = input('value(1-36):\n')
+        return n
+    return q
+"""
+class Bet():
+    def __init__(self, q, n, clr):
+        self.q = q
+    def bet_color():
+        clr = input('[r]ed/[b]lack?\n')
+        return clr
+       def bet_number():
+           n = input('Number?(1-36)\n')
+
+
 def start():
- print('you have: '+str(bank))
- bet()
+    print('you have: '+str(bank))
+ 
 
 
 def menu():
-    b = input('type\' start\' to start a game,\n \'exit\' to exit: \n ')
-    if b == 'start':
+    b = input('[s]tart game\n [e]xit: \n ')
+    if b == 's':
         start()
 menu()
-print(bet(q))
+
+
 
