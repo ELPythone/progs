@@ -1,7 +1,6 @@
 from random import randint
 #creating roulette values-----------
 ma=[]
-bank = 1000
 i=0
 while i < 36:
  i+=1
@@ -32,25 +31,75 @@ class Bet():
     def number():
         n = input('Number?(1-36)\n') 
         return n
+    def qty():
+        q = input('How much money do you bet?\n')
+        return q
 
+
+class bank():
+    def __init__(self, nalik):
+        self.nalik = nalik
+
+cs = bank(1000)
+
+def roll():
+    x=randint(0, 37)
+    return x
+    
+def nbr_4ek():
+    c = False
+    if roll()==Bet.number():
+        c = True
+    else: 
+        c = False
+    return c
+
+def clr_4ek():
+    c = False
+    if roll() in red and Bet.color() == 'r':
+        c = True
+    elif roll() in black and Bet.color == 'b':
+        c = False
+    return c
+    
 def tree2():
+    print('Your money: '+ str(cs.nalik))
     l = tree()   
     if l == 'c':
-            print('dis shit working')
+        clr_4ek()
     elif l== 'n':
-            print('syka blyat')
-
+        nbr_4ek()
+    return l
 
 def tree():
+    Bet.qty()
     ch = input('bet on [c]olor \nbet on [n]umber\n')
     if ch == 'c':
         Bet.color()
     elif ch == 'n':
         Bet.number()
     return ch
-
+def cash():
+    if nbr_4ek or clr_4ek:
+        cs.nalik += int(Bet.qty())
+        print(roll())
+        print('You win!\n Your money: '+ str(cs.nalik))
+        f = input('\nPlay again?[y/n]\n')
+        if f == 'y':
+            loop()
+        
+    else:
+        cs.nalik-=int(Bet.qty())
+        print('You lost!\n Your money: '+ str(cs.nalik))
+        f = input('\nPlay again?[y/n]\n')
+        if f == 'y':
+            loop()
+        
 def menu():
     b = input('[s]tart game\n[e]xit: \n ')
-menu()
-tree()
+    loop()
 
+def loop():
+    tree2()
+    cash()
+menu()
