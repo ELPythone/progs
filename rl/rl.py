@@ -21,37 +21,27 @@ while i<=36:
 #---------------------------------
 #gameplay
 
-"""
-def bet():
-    #lol=randint(0,36)
-    q = input('how much will you bet?\n')
-    ch= input('To bet on [c]olor \nTo bet on [v]alue\n')
-    if ch =='c':
-        clr = input('What color?(red,black)\n')
-        return clr
-    elif ch =='c':
-        n = input('value(1-36):\n')
-        return n
-    return q
-"""
 class Bet():
     def __init__(self, q, n, clr):
         self.q = q
+        self.n = n
+        self.clr = clr
     def color():
         clr = input('[r]ed/[b]lack?\n')
         return clr
     def number():
-        n = input('Number?(1-36)\n')    
+        n = input('Number?(1-36)\n') 
         return n
-    
-def check():
-        if start() == 'c':
+
+def tree2():
+    l = tree()   
+    if l == 'c':
             print('dis shit working')
-        elif start() == 'n':
+    elif l== 'n':
             print('syka blyat')
 
 
-def start():
+def tree():
     ch = input('bet on [c]olor \nbet on [n]umber\n')
     if ch == 'c':
         Bet.color()
@@ -61,8 +51,6 @@ def start():
 
 def menu():
     b = input('[s]tart game\n[e]xit: \n ')
-    if b == 's':
-        check()
 menu()
-
+tree()
 
