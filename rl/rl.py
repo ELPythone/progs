@@ -37,23 +37,32 @@ def bet():
 class Bet():
     def __init__(self, q, n, clr):
         self.q = q
-    def bet_color():
+    def color():
         clr = input('[r]ed/[b]lack?\n')
         return clr
-       def bet_number():
-           n = input('Number?(1-36)\n')
+    def number():
+        n = input('Number?(1-36)\n')    
+        return n
+    
+def check():
+        if start() == 'c':
+            print('dis shit working')
+        elif start() == 'n':
+            print('syka blyat')
 
 
 def start():
-    print('you have: '+str(bank))
- 
-
+    ch = input('bet on [c]olor \nbet on [n]umber\n')
+    if ch == 'c':
+        Bet.color()
+    elif ch == 'n':
+        Bet.number()
+    return ch
 
 def menu():
-    b = input('[s]tart game\n [e]xit: \n ')
+    b = input('[s]tart game\n[e]xit: \n ')
     if b == 's':
-        start()
+        check()
 menu()
-
 
 
