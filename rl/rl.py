@@ -72,6 +72,7 @@ def tree2():
 
 def tree():
     roll()
+    print('Your money: '+str(bank))
     qty()
     global ch
     ch = input('bet on [c]olor \nbet on [n]umber\n')
@@ -105,8 +106,6 @@ def clrcash():
         print('You win!\n Your money: '+ str(bank))
         f = input('\nPlay again?[y/n]\n')
         if f == 'y':
-            tree()
-        else:
             tree()
     elif c4 == 'f':
         bank-=int(q)
