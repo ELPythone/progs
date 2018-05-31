@@ -19,87 +19,106 @@ while i<=36:
 
 #---------------------------------
 #gameplay
+def color_ch():
+    global clrch
+    clrch = input('[r]ed/[b]lack?\n')
+    tree2()
 
-class Bet():
-    def __init__(self, q, n, clr):
-        self.q = q
-        self.n = n
-        self.clr = clr
-    def color():
-        clr = input('[r]ed/[b]lack?\n')
-        return clr
-    def number():
-        n = input('Number?(1-36)\n') 
-        return n
-    def qty():
-        q = input('How much money do you bet?\n')
-        return q
+def number_ch():
+    global nch
+    nch = input('Number?(1-36)\n') 
+    tree2()
+    
+def qty():
+    global q
+    q = input('How much money do you bet?\n')
 
-
-class bank():
-    def __init__(self, nalik):
-        self.nalik = nalik
-
-cs = bank(1000)
+global bank
+bank = 1000
 
 def roll():
-    x=randint(0, 37)
-    return x
+   global x 
+   x = randint(0, 37)
+   return x
     
 def nbr_4ek():
-    c = False
-    if roll()==Bet.number():
-        c = True
+    global n4
+    if x==nch:
+        n4 = 't'
     else: 
-        c = False
-    return c
+        n4 = 'f'
+    nbrcash()
+
 
 def clr_4ek():
-    c = False
-    if roll() in red and Bet.color() == 'r':
-        c = True
-    elif roll() in black and Bet.color == 'b':
-        c = False
-    return c
-    
+    global c4
+    c4 = 'f'
+    if x in red and clrch == 'r':
+        c4 = 't'
+    elif x in black and clrch == 'b':
+        c4 = 't'
+    else:
+            c4 = 'f'
+    clrcash()
+
 def tree2():
-    print('Your money: '+ str(cs.nalik))
-    l = tree()   
-    if l == 'c':
+    print('Your money: '+ str(bank))  
+    if ch == 'c':
         clr_4ek()
-    elif l== 'n':
+    elif ch == 'n':
         nbr_4ek()
-    return l
+
+
 
 def tree():
-    Bet.qty()
+    roll()
+    qty()
+    global ch
     ch = input('bet on [c]olor \nbet on [n]umber\n')
     if ch == 'c':
-        Bet.color()
+        color_ch()
     elif ch == 'n':
-        Bet.number()
-    return ch
-def cash():
-    if nbr_4ek or clr_4ek:
-        cs.nalik += int(Bet.qty())
-        print(roll())
-        print('You win!\n Your money: '+ str(cs.nalik))
+        number_ch()
+
+def nbrcash():
+    if n4== 't':
+        global bank
+        bank+= int(qty())*5
+        print(x)
+        print('You win!\n Your money: '+ str(bank))
         f = input('\nPlay again?[y/n]\n')
         if f == 'y':
-            loop()
-        
+            tree()
     else:
-        cs.nalik-=int(Bet.qty())
-        print('You lost!\n Your money: '+ str(cs.nalik))
+        bank-=int(q)
+        print(x)
+        print('You lost!\n Your money: '+ str(bank))
         f = input('\nPlay again?[y/n]\n')
         if f == 'y':
-            loop()
-        
+            tree()
+
+def clrcash():
+    if c4== 't':
+        global bank
+        bank += int(q)
+        print(x)
+        print('You win!\n Your money: '+ str(bank))
+        f = input('\nPlay again?[y/n]\n')
+        if f == 'y':
+            tree()
+        else:
+            tree()
+    elif c4 == 'f':
+        bank-=int(q)
+        print(x)
+        print('You lost!\n Your money: '+ str(bank))
+        f = input('\nPlay again?[y/n]\n')
+        if f == 'y':
+            tree()
+    
 def menu():
     b = input('[s]tart game\n[e]xit: \n ')
-    loop()
-
-def loop():
-    tree2()
-    cash()
+    if b == 's':
+        tree()
+    
 menu()
